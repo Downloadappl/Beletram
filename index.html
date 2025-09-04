@@ -3,16 +3,396 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sound Player</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <title>Sound Player - Premium Audio Experience</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    :root {
+      --primary: #000;
+      --secondary: #0a0a0a;
+      --accent: #6c42f5;
+      --accent-light: #8c6bff;
+      --text: #ffffff;
+      --text-secondary: #b3b3b3;
+    }
+
+    body {
+      background: var(--primary);
+      color: var(--text);
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(108, 66, 245, 0.15) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(108, 66, 245, 0.1) 0%, transparent 20%);
+      z-index: -1;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 10, 10, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 1.2rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--accent), var(--accent-light));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .language-switch {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .language-switch button {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text);
+      padding: 0.6rem 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .language-switch button:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(108, 66, 245, 0.3);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .app-info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 3rem 1rem 2rem;
+      gap: 1.5rem;
+      animation: fadeInUp 1s ease;
+    }
+
+    .app-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 22px;
+      box-shadow: 0 10px 30px rgba(108, 66, 245, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .app-icon:hover {
+      transform: scale(1.05) rotate(5deg);
+    }
+
+    .app-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .developer {
+      font-size: 1rem;
+    }
+
+    .developer a {
+      color: var(--accent-light);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .developer a:hover {
+      color: var(--text);
+      text-shadow: 0 0 8px var(--accent-light);
+    }
+
+    .download-btn {
+      text-align: center;
+      margin: 2.5rem 1.5rem;
+      animation: pulse 2s infinite;
+    }
+
+    .download-btn a {
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .download-btn button {
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: #fff;
+      border: none;
+      padding: 1.2rem 2.5rem;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 20px rgba(108, 66, 245, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .download-btn button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(108, 66, 245, 0.4);
+    }
+
+    .gallery {
+      margin: 4rem 0;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .slider {
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      padding: 1rem 0.5rem 2rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) var(--secondary);
+    }
+
+    .slider::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .slider::-webkit-scrollbar-track {
+      background: var(--secondary);
+      border-radius: 10px;
+    }
+
+    .slider::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 10px;
+    }
+
+    .slides {
+      display: inline-flex;
+      gap: 1.5rem;
+    }
+
+    .slides img {
+      max-height: 400px;
+      border-radius: 16px;
+      transition: all 0.4s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .slides img:hover {
+      transform: scale(1.05) translateY(-10px);
+      box-shadow: 0 15px 30px rgba(108, 66, 245, 0.3);
+    }
+
+    .features {
+      max-width: 800px;
+      margin: 0 auto 4rem;
+      padding: 0 1rem;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    .accordion {
+      background: linear-gradient(to right, rgba(108, 66, 245, 0.1), rgba(108, 66, 245, 0.05));
+      color: var(--text);
+      cursor: pointer;
+      padding: 1.5rem;
+      width: 100%;
+      text-align: left;
+      border: none;
+      outline: none;
+      font-size: 1.3rem;
+      font-weight: 600;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .accordion i {
+      transition: transform 0.3s ease;
+    }
+
+    .accordion.active i {
+      transform: rotate(180deg);
+    }
+
+    .accordion.active, .accordion:hover {
+      background: linear-gradient(to right, var(--accent), rgba(108, 66, 245, 0.7));
+    }
+
+    .panel {
+      background: rgba(20, 20, 20, 0.7);
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.5s ease-out;
+      border-radius: 0 0 12px 12px;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .panel-content {
+      padding: 1.5rem;
+    }
+
+    .panel h3 {
+      margin: 1.2rem 0 0.8rem;
+      font-size: 1.3rem;
+      color: var(--accent-light);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .panel ul {
+      list-style: none;
+      padding: 0.5rem 0;
+    }
+
+    .panel li {
+      padding: 0.8rem 0;
+      font-size: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .panel li:hover {
+      color: var(--accent-light);
+      transform: translateX(5px);
+    }
+
+    .panel li:before {
+      content: "•";
+      color: var(--accent);
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      padding: 2rem;
+      background: var(--secondary);
+      margin-top: 3rem;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header {
+        padding: 1rem;
+      }
+      
+      .logo {
+        font-size: 1.5rem;
+      }
+      
+      .app-info {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .app-title {
+        font-size: 1.8rem;
+      }
+      
+      .slides img {
+        max-height: 300px;
+      }
+      
+      .download-btn button {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      main {
+        padding: 1rem;
+      }
+      
+      .slides img {
+        max-height: 250px;
+      }
+      
+      .accordion {
+        padding: 1.2rem;
+        font-size: 1.1rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="header">
+    <h1 class="logo"><i class="fas fa-music"></i> Sound Player</h1>
     <div class="language-switch">
-      <button onclick="setLanguage('en')">EN</button>
-      <button onclick="setLanguage('ar')">؏</button>
+      <button onclick="setLanguage('en')"><i class="fas fa-globe"></i> EN</button>
+      <button onclick="setLanguage('ar')"><i class="fas fa-globe"></i> AR</button>
     </div>
-    <h1 class="logo">Sound Player</h1>
   </header>
 
   <main>
@@ -21,20 +401,165 @@
       <div>
         <h2 class="app-title">Sound Player</h2>
         <p class="developer">
-          <a href="https://t.me/WWWL5" target="_blank">Dev-Osama</a>
+          <a href="https://t.me/WWWL5" target="_blank"><i class="fas fa-user"></i> Dev-Osama</a>
         </p>
       </div>
     </section>
 
     <div class="download-btn">
       <a href="app/Sound_Player_1.0.apk" download>
-        <button id="downloadText">Download The App</button>
+        <button id="downloadText"><i class="fas fa-download"></i> Download The App</button>
       </a>
     </div>
 
     <section class="gallery">
       <div class="slider">
         <div class="slides">
+          <img src="img/img_os1.png" alt="Screenshot 1">
+          <img src="img/img_os2.png" alt="Screenshot 2">
+          <img src="img/img_os3.png" alt="Screenshot 3">
+          <img src="img/img_os4.png" alt="Screenshot 4">
+          <img src="img/img_os5.png" alt="Screenshot 5">
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <button class="accordion" id="aboutBtn">
+        <span>About The App</span>
+        <i class="fas fa-chevron-down"></i>
+      </button>
+      <div class="panel">
+        <div class="panel-content">
+          <h3 id="featuresTitle"><i class="fas fa-star"></i> App Features</h3>
+          <ul>
+            <li id="f1"><i class="fas fa-check"></i> Easy and fast audio player app.</li>
+            <li id="f2"><i class="fas fa-check"></i> Includes multiple themes to suit your taste.</li>
+            <li id="f3"><i class="fas fa-check"></i> Quickly and easily search for audio files.</li>
+            <li id="f4"><i class="fas fa-check"></i> Add audio files to your favorites list.</li>
+            <li id="f5"><i class="fas fa-check"></i> The app contains no annoying ads.</li>
+            <li id="f6"><i class="fas fa-check"></i> And many other features for you to explore.</li>
+          </ul>
+          <h3 id="infoTitle"><i class="fas fa-info-circle"></i> App Information</h3>
+          <ul>
+            <li id="i1"><i class="fas fa-code-branch"></i> Version: 1.0</li>
+            <li id="i2"><i class="fas fa-calendar-alt"></i> Last Update: 1/10/2025</li>
+            <li id="i3"><i class="fas fa-weight"></i> App Size: 30 MB</li>
+            <li id="i4"><i class="fas fa-calendar-plus"></i> Release Date: 1/10/2025</li>
+            <li id="i5"><i class="fas fa-user-tie"></i> Developer: Osama Hassan</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Sound Player. All rights reserved.
+  </footer>
+
+  <script>
+    function setLanguage(lang) {
+      const texts = {
+        en: {
+          download: "Download The App",
+          about: "About The App",
+          featuresTitle: "App Features",
+          f1: "Easy and fast audio player app.",
+          f2: "Includes multiple themes to suit your taste.",
+          f3: "Quickly and easily search for audio files.",
+          f4: "Add audio files to your favorites list.",
+          f5: "The app contains no annoying ads.",
+          f6: "And many other features for you to explore.",
+          infoTitle: "App Information",
+          i1: "Version: 1.0",
+          i2: "Last Update: 1/10/2025",
+          i3: "App Size: 30 MB",
+          i4: "Release Date: 1/10/2025",
+          i5: "Developer: Osama Hassan"
+        },
+        ar: {
+          download: "تحميل التطبيق",
+          about: "معلومات عن التطبيق",
+          featuresTitle: "مميزات التطبيق",
+          f1: "تطبيق سهل و سريع لتشغيل الملفات الصوتية.",
+          f2: "يحتوي على ثيمات متعددة لتناسب ذوقك.",
+          f3: "يمكنك البحث عن الملفات الصوتية بسرعة وسهولة.",
+          f4: "يمكنك إضافة الملفات الصوتية إلى قائمة المفضلة لديك.",
+          f5: "التطبيق لا يحتوي على أي إعلانات مزعجة.",
+          f6: "ويحتوي على الكثير من المميزات الأخرى استكشفها بنفسك.",
+          infoTitle: "معلومات البرنامج",
+          i1: "الاصدار : 1.0",
+          i2: "تاريخ التحديث : 1/10/2025",
+          i3: "حجم التطبيق : 30 MB",
+          i4: "تاريخ إصدار التطبيق : 1/10/2025",
+          i5: "المطور : أسامة حسان"
+        }
+      };
+
+      document.getElementById("downloadText").innerHTML = `<i class="fas fa-download"></i> ${texts[lang].download}`;
+      document.querySelector("#aboutBtn span").innerText = texts[lang].about;
+      document.getElementById("featuresTitle").innerHTML = `<i class="fas fa-star"></i> ${texts[lang].featuresTitle}`;
+      document.getElementById("f1").innerHTML = `<i class="fas fa-check"></i> ${texts[lang].f1}`;
+      document.getElementById("f2").innerHTML = `<i class="fas fa-check"></i> ${texts[lang].f2}`;
+      document.getElementById("f3").innerHTML = `<i class="fas fa-check"></i> ${texts[lang].f3}`;
+      document.getElementById("f4").innerHTML = `<i class="fas fa-check"></i> ${texts[lang].f4}`;
+      document.getElementById("f5").innerHTML = `<i class="fas fa-check"></i> ${texts[lang].f5}`;
+      document.getElementById("f6").innerHTML = `<i class="fas fa-check"></i> ${texts[lang].f6}`;
+      document.getElementById("infoTitle").innerHTML = `<i class="fas fa-info-circle"></i> ${texts[lang].infoTitle}`;
+      document.getElementById("i1").innerHTML = `<i class="fas fa-code-branch"></i> ${texts[lang].i1}`;
+      document.getElementById("i2").innerHTML = `<i class="fas fa-calendar-alt"></i> ${texts[lang].i2}`;
+      document.getElementById("i3").innerHTML = `<i class="fas fa-weight"></i> ${texts[lang].i3}`;
+      document.getElementById("i4").innerHTML = `<i class="fas fa-calendar-plus"></i> ${texts[lang].i4}`;
+      document.getElementById("i5").innerHTML = `<i class="fas fa-user-tie"></i> ${texts[lang].i5}`;
+
+      document.getElementById("features").style.direction = (lang === "ar") ? "rtl" : "ltr";
+
+      // إغلاق معلومات التطبيق لو مفتوحة
+      var accordion = document.querySelector(".accordion");
+      var panel = accordion.nextElementSibling;
+      accordion.classList.remove("active");
+      panel.style.maxHeight = null;
+    }
+
+    // Initialize with English
+    setLanguage('en');
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Accordion functionality
+      document.querySelector(".accordion").addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      });
+      
+      // Add animations on scroll
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animation = 'fadeInUp 1s ease forwards';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      // Observe elements for animation
+      document.querySelectorAll('.app-info, .gallery, .features').forEach(el => {
+        observer.observe(el);
+      });
+    });
+  </script>
+</body>
+  </html>        <div class="slides">
           <img src="img/img_os1.png" alt="Screenshot 1">
           <img src="img/img_os2.png" alt="Screenshot 2">
           <img src="img/img_os3.png" alt="Screenshot 3">
