@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sound Player - Premium Audio Experience</title>
+  <title>Beletram - تواصل اجتماعي عراقي</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
     
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
     }
 
     :root {
@@ -30,6 +29,11 @@
       overflow-x: hidden;
       min-height: 100vh;
       position: relative;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    body[dir="ltr"] {
+      font-family: 'Poppins', sans-serif;
     }
 
     body::before {
@@ -168,6 +172,7 @@
       display: flex;
       align-items: center;
       gap: 0.8rem;
+      margin: 0 auto;
     }
 
     .download-btn button:hover {
@@ -318,6 +323,18 @@
       margin-top: 3rem;
     }
 
+    .app-description {
+      text-align: center;
+      margin: 2rem auto;
+      max-width: 800px;
+      padding: 0 1rem;
+      line-height: 1.6;
+    }
+
+    .app-description p {
+      margin-bottom: 1rem;
+    }
+
     /* Animations */
     @keyframes fadeIn {
       from { opacity: 0; }
@@ -388,7 +405,7 @@
 </head>
 <body>
   <header class="header">
-    <h1 class="logo"><i class="fas fa-music"></i> Sound Player</h1>
+    <h1 class="logo"><i class="fas fa-flag"></i> Beletram</h1>
     <div class="language-switch">
       <button onclick="setLanguage('en')"><i class="fas fa-globe"></i> EN</button>
       <button onclick="setLanguage('ar')"><i class="fas fa-globe"></i> AR</button>
@@ -397,56 +414,61 @@
 
   <main>
     <section class="app-info">
-      <img src="img/os_sound_player.png" alt="App Icon" class="app-icon">
+      <img src="img/beletram_icon.png" alt="Beletram App Icon" class="app-icon">
       <div>
-        <h2 class="app-title">Sound Player</h2>
+        <h2 class="app-title">Beletram</h2>
         <p class="developer">
-          <a href="https://t.me/WWWL5" target="_blank"><i class="fas fa-user"></i> Dev-Osama</a>
+          <a href="t.me/beletram" target="_blank"><i class="fas fa-building"></i>Beletram</a>
         </p>
       </div>
     </section>
 
+    <div class="app-description">
+      <p>بيليترام تواصل أجتماعي عراقي 🇮🇶</p>
+      <p>تطبيق تواصل اجتماعي صنع بلمسة عراقية</p>
+    </div>
+
     <div class="download-btn">
-      <a href="app/Sound_Player_1.0.apk" download>
-        <button id="downloadText"><i class="fas fa-download"></i> Download The App</button>
+      <a href="https://www.upload-apk.com/ar/ck1ixM5cMSjUYZV" id="downloadLink">
+        <button id="downloadText"><i class="fas fa-download"></i> تحميل التطبيق</button>
       </a>
     </div>
 
     <section class="gallery">
       <div class="slider">
         <div class="slides">
-          <img src="img/img_os1.png" alt="Screenshot 1">
-          <img src="img/img_os2.png" alt="Screenshot 2">
-          <img src="img/img_os3.png" alt="Screenshot 3">
-          <img src="img/img_os4.png" alt="Screenshot 4">
-          <img src="img/img_os5.png" alt="Screenshot 5">
+          <img src="img/screen1.png" alt="Beletram Screenshot 1">
+          <img src="img/screen2.png" alt="Beletram Screenshot 2">
+          <img src="img/screen3.png" alt="Beletram Screenshot 3">
+          <img src="img/screen4.png" alt="Beletram Screenshot 4">
+          <img src="img/screen5.png" alt="Beletram Screenshot 5">
         </div>
       </div>
     </section>
 
     <section class="features" id="features">
       <button class="accordion" id="aboutBtn">
-        <span>About The App</span>
+        <span>معلومات عن التطبيق</span>
         <i class="fas fa-chevron-down"></i>
       </button>
       <div class="panel">
         <div class="panel-content">
-          <h3 id="featuresTitle"><i class="fas fa-star"></i> App Features</h3>
+          <h3 id="featuresTitle"><i class="fas fa-star"></i> مميزات التطبيق</h3>
           <ul>
-            <li id="f1"><i class="fas fa-check"></i> Easy and fast audio player app.</li>
-            <li id="f2"><i class="fas fa-check"></i> Includes multiple themes to suit your taste.</li>
-            <li id="f3"><i class="fas fa-check"></i> Quickly and easily search for audio files.</li>
-            <li id="f4"><i class="fas fa-check"></i> Add audio files to your favorites list.</li>
-            <li id="f5"><i class="fas fa-check"></i> The app contains no annoying ads.</li>
-            <li id="f6"><i class="fas fa-check"></i> And many other features for you to explore.</li>
+            <li id="f1"><i class="fas fa-check"></i> الدردشات: بامكانك الدردشة معى الاصدقاء ومشاركة الوسائط بحرية تامه</li>
+            <li id="f2"><i class="fas fa-check"></i> البحث: البحث لايجاد الاصدقاء او المحتوى التي ترقب بهِ والبحث السريع للاصدقاء</li>
+            <li id="f3"><i class="fas fa-check"></i> الريلز: مشاهدة فيدوهات قصيرة للتسليه والاعجاب والتعليق، ونشر فيدوهات ترفيهية</li>
+            <li id="f4"><i class="fas fa-check"></i> القصص: شارك القصص للاصدقاء فيدوهات و صور والحصول على اعجابات</li>
+            <li id="f5"><i class="fas fa-check"></i> الملف الشخصي: الحصول على شهرة ومحتوى مع سيرة ذاتية واسماء مستخدم لتميز حسابك</li>
+            <li id="f6"><i class="fas fa-check"></i> الغرف: انشاء الغرف الصوتية والدردشية داخل التطبيق والتعرف على اصدقاء</li>
           </ul>
-          <h3 id="infoTitle"><i class="fas fa-info-circle"></i> App Information</h3>
+          <h3 id="infoTitle"><i class="fas fa-info-circle"></i> معلومات التطبيق</h3>
           <ul>
-            <li id="i1"><i class="fas fa-code-branch"></i> Version: 1.0</li>
-            <li id="i2"><i class="fas fa-calendar-alt"></i> Last Update: 1/10/2025</li>
-            <li id="i3"><i class="fas fa-weight"></i> App Size: 30 MB</li>
-            <li id="i4"><i class="fas fa-calendar-plus"></i> Release Date: 1/10/2025</li>
-            <li id="i5"><i class="fas fa-user-tie"></i> Developer: Osama Hassan</li>
+            <li id="i1"><i class="fas fa-code-branch"></i> الإصدار: 1.4</li>
+            <li id="i2"><i class="fas fa-calendar-alt"></i> تاريخ آخر تحديث: 2025/9/16</li>
+            <li id="i3"><i class="fas fa-weight"></i> الحجم: 118 ميجابايت</li>
+            <li id="i4"><i class="fas fa-calendar-plus"></i> تاريخ الإصدار: 2024/1/11</li>
+            <li id="i5"><i class="fas fa-user-tie"></i> المطور: شركة ماستوڤ</li>
           </ul>
         </div>
       </div>
@@ -454,48 +476,69 @@
   </main>
 
   <footer>
-    © 2025 Sound Player. All rights reserved.
+    © 2025 Beletram. جميع الحقوق محفوظة لشركة ماستوڤ
   </footer>
 
   <script>
     function setLanguage(lang) {
       const texts = {
         en: {
+          title: "Beletram - Iraqi Social Network",
           download: "Download The App",
           about: "About The App",
           featuresTitle: "App Features",
-          f1: "Easy and fast audio player app.",
-          f2: "Includes multiple themes to suit your taste.",
-          f3: "Quickly and easily search for audio files.",
-          f4: "Add audio files to your favorites list.",
-          f5: "The app contains no annoying ads.",
-          f6: "And many other features for you to explore.",
+          f1: "Chats: You can chat with friends and share media freely",
+          f2: "Search: Search to find friends or content you're looking for",
+          f3: "Reels: Watch short videos for entertainment, like and comment",
+          f4: "Stories: Share stories with friends, videos and photos, get likes",
+          f5: "Profile: Get fame and content with bio and usernames",
+          f6: "Rooms: Create audio and chat rooms, meet new friends",
           infoTitle: "App Information",
-          i1: "Version: 1.0",
-          i2: "Last Update: 1/10/2025",
-          i3: "App Size: 30 MB",
-          i4: "Release Date: 1/10/2025",
-          i5: "Developer: Osama Hassan"
+          i1: "Version: 1.4",
+          i2: "Last Update: 2025/9/16",
+          i3: "Size: 118 MB",
+          i4: "Release Date: 2024/1/11",
+          i5: "Developer: Mastov Company",
+          footer: "© 2025 Beletram. All rights reserved to Mastov Company",
+          description1: "Beletram Iraqi Social Network 🇮🇶",
+          description2: "Social media app with an Iraqi touch"
         },
         ar: {
+          title: "Beletram - تواصل اجتماعي عراقي",
           download: "تحميل التطبيق",
           about: "معلومات عن التطبيق",
           featuresTitle: "مميزات التطبيق",
-          f1: "تطبيق سهل و سريع لتشغيل الملفات الصوتية.",
-          f2: "يحتوي على ثيمات متعددة لتناسب ذوقك.",
-          f3: "يمكنك البحث عن الملفات الصوتية بسرعة وسهولة.",
-          f4: "يمكنك إضافة الملفات الصوتية إلى قائمة المفضلة لديك.",
-          f5: "التطبيق لا يحتوي على أي إعلانات مزعجة.",
-          f6: "ويحتوي على الكثير من المميزات الأخرى استكشفها بنفسك.",
-          infoTitle: "معلومات البرنامج",
-          i1: "الاصدار : 1.0",
-          i2: "تاريخ التحديث : 1/10/2025",
-          i3: "حجم التطبيق : 30 MB",
-          i4: "تاريخ إصدار التطبيق : 1/10/2025",
-          i5: "المطور : أسامة حسان"
+          f1: "الدردشات: بامكانك الدردشة معى الاصدقاء ومشاركة الوسائط بحرية تامه",
+          f2: "البحث: البحث لايجاد الاصدقاء او المحتوى التي ترقب بهِ والبحث السريع للاصدقاء",
+          f3: "الريلز: مشاهدة فيدوهات قصيرة للتسليه والاعجاب والتعليق، ونشر فيدوهات ترفيهية",
+          f4: "القصص: شارك القصص للاصدقاء فيدوهات و صور والحصول على اعجابات",
+          f5: "الملف الشخصي: الحصول على شهرة ومحتوى مع سيرة ذاتية واسماء مستخدم لتميز حسابك",
+          f6: "الغرف: انشاء الغرف الصوتية والدردشية داخل التطبيق والتعرف على اصدقاء",
+          infoTitle: "معلومات التطبيق",
+          i1: "الإصدار: 1.4",
+          i2: "تاريخ آخر تحديث: 2025/9/16",
+          i3: "الحجم: 118 ميجابايت",
+          i4: "تاريخ الإصدار: 2024/1/11",
+          i5: "المطور: شركة ماستوڤ",
+          footer: "© 2025 Beletram. جميع الحقوق محفوظة لشركة ماستوڤ",
+          description1: "بيليترام تواصل أجتماعي عراقي 🇮🇶",
+          description2: "تطبيق تواصل اجتماعي صنع بلمسة عراقية"
         }
       };
 
+      // تغيير اتجاه الصفحة
+      if (lang === "ar") {
+        document.documentElement.dir = "rtl";
+        document.documentElement.lang = "ar";
+        document.body.style.fontFamily = "'Cairo', sans-serif";
+      } else {
+        document.documentElement.dir = "ltr";
+        document.documentElement.lang = "en";
+        document.body.style.fontFamily = "'Poppins', sans-serif";
+      }
+
+      // تحديث النصوص
+      document.title = texts[lang].title;
       document.getElementById("downloadText").innerHTML = `<i class="fas fa-download"></i> ${texts[lang].download}`;
       document.querySelector("#aboutBtn span").innerText = texts[lang].about;
       document.getElementById("featuresTitle").innerHTML = `<i class="fas fa-star"></i> ${texts[lang].featuresTitle}`;
@@ -511,8 +554,14 @@
       document.getElementById("i3").innerHTML = `<i class="fas fa-weight"></i> ${texts[lang].i3}`;
       document.getElementById("i4").innerHTML = `<i class="fas fa-calendar-plus"></i> ${texts[lang].i4}`;
       document.getElementById("i5").innerHTML = `<i class="fas fa-user-tie"></i> ${texts[lang].i5}`;
-
-      document.getElementById("features").style.direction = (lang === "ar") ? "rtl" : "ltr";
+      document.querySelector("footer").innerText = texts[lang].footer;
+      
+      // تحديث وصف التطبيق
+      const descriptionElements = document.querySelectorAll('.app-description p');
+      if (descriptionElements.length >= 2) {
+        descriptionElements[0].innerText = texts[lang].description1;
+        descriptionElements[1].innerText = texts[lang].description2;
+      }
 
       // إغلاق معلومات التطبيق لو مفتوحة
       var accordion = document.querySelector(".accordion");
@@ -521,8 +570,8 @@
       panel.style.maxHeight = null;
     }
 
-    // Initialize with English
-    setLanguage('en');
+    // Initialize with Arabic
+    setLanguage('ar');
 
     document.addEventListener('DOMContentLoaded', function() {
       // Accordion functionality
@@ -559,4 +608,4 @@
     });
   </script>
 </body>
-  </html>
+</html>
